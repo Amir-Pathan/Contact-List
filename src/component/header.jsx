@@ -17,7 +17,7 @@ class Header extends PureComponent{
         return(
             <div>
                 <div>
-                    <h3>Contact-List </h3>
+                    <h3>Contact-List</h3>
                 </div>
                 <div>
                     <IconContext.Provider value={{size:30}}>
