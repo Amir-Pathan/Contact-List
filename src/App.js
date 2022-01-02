@@ -6,11 +6,10 @@ import NewContact from './component/newcontact';
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 
 function App() {
-
   return (
     <BrowserRouter>
         <Provider store={store}>
-          <Routes>
+          <Routes> 
             <Route exact path='/' element={<Header/>}/>
             <Route path='/newContact' element={<NewContact/>}/>
           </Routes>
