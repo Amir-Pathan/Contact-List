@@ -3,6 +3,10 @@ import {IconContext} from 'react-icons'
 import {FaSearch} from 'react-icons/fa'
 import {AiOutlineSortAscending,AiOutlineSortDescending,AiFillPlusCircle} from 'react-icons/ai'
 import {BiGroup} from 'react-icons/bi'
+import {Add} from '../redux'
+import {connect} from 'react-redux'
+import {AppBar,Toolbar} from '@material-ui/core'
+import {Link} from 'react-router-dom'
 
 class Header extends PureComponent{
 
@@ -13,28 +17,50 @@ class Header extends PureComponent{
         }
     }
 
+    componentDidMount(){
+        this.props.add()
+    }
+
     render(){
         return(
-            <div>
-                <div>
+            <AppBar color='inherit'>
+                <Toolbar className='header'> 
+                  <div>
                     <h3>Contact-List</h3>
-                </div>
-                <div>
+                  </div>
+                  <div className='icons'>
                     <IconContext.Provider value={{size:30}}>
-                        <FaSearch/>
+                        <FaSearch cursor={'pointer'}/>
                         {
                             this.state.az?
-                               <AiOutlineSortAscending/>
+                               <AiOutlineSortAscending cursor={'pointer'}/>
                             :
-                               <AiOutlineSortDescending/>
+                               <AiOutlineSortDescending cursor={'pointer'}/>
                         }
-                        <BiGroup/>
-                        <AiFillPlusCircle/>
+                        <BiGroup cursor={'pointer'}/>
+                        <Link to={{
+                            pathname:'/newContact'
+                        }}> 
+                            <AiFillPlusCircle cursor={'pointer'}/>
+                        </Link>
                     </IconContext.Provider>
                 </div>
-            </div>
+                </Toolbar>
+            </AppBar>
         )
     }
 }
 
-export default Header
+const mapStateToProps=state=>{
+    return{
+        data : state
+    }
+}
+
+const mapDispatchToProps=dispatch=>{
+    return {
+        add : ()=>dispatch(Add())
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header)
