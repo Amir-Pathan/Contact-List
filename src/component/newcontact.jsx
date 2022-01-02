@@ -65,7 +65,7 @@ class NewContact extends Component{
                {
                    this.state.loading?
                       <h1 style={{textAlign:'center',marginTop:'40px'}}>Loading...</h1>:
-                      <div className='field'> 
+                      <div className='field' > 
                            <TextField style={{marginTop:'15px'}} variant='outlined' size='small'
                             label='Enter Name' value={this.state.name} onChange={this.nameHandler}/>
                              <TextField style={{marginTop:'15px'}} variant='outlined' size='small'
